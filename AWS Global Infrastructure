@@ -1,0 +1,23 @@
+1) Availability Zone (AZ) - it is just a data center. An AZ may have several Data centers, but because they are close to 
+                            each other so they can be counted as 1 AZ. 
+                            So 1 AZ could be 1 or more Data Centers which could be couple of miles away let say.
+2) Region - A region is a geographical area. Each region consist of 2 (or more) AZ.
+3) Edge Location - These are end points for AWS which are used for caching content. Typically this consist of cloudfront
+                    which nothing but Amazon's Content Delivery Network(CDN)
+                    There are many more edge locations than Regions.
+
+Different Types of support plans
+================================
+1) Basic plan (Free Tier) - This is included with all accounts
+                            24*7 self service access to forums and resources
+                            best practice checks to help improve security and performance
+                            Access to health status and notification
+2) Developer Plan ($29/month) - For early adoption, testing and development
+                                Email access to AWS support during business hours
+                                1 primary contact can open an unlimited number of support cases
+                                12 hours response time for non production systems
+3) Business Plan ($100/month) - for production workloads and business critical dependencies
+                                24*7 chat, phone and email access to AWS support    
+                                Unlimited number of contacts cna open unlimited number of support cases
+                                1-hour reponse time for production systems
+4) Enterprise level support ($15000/month) - 
