@@ -1,3 +1,110 @@
 1) Make sure you choose region as US East(N. virginia). This is most up to date region.
+    but one thing to note here is that under IAM the region will be Global. That means, whichever user, group, roles
+    are created they are at global level and not specific to any perticular region.
 2) You can find IAM service under "Security, Identity and compliance" section of AWS console.
-3) 
+3) Now once you are at the IAM page you can see following things
+    a) IAM user sign-in link
+        https://592590975420.signin.aws.amazon.com/console
+        So this is a link which you can sent to your users. This is made up of you account number followed by signin.aws.
+        amazon.com/console. To think link is a public accessible URL for your users to this AWS account.
+        you can customise this URL from the customize link on the right had side of URL. So lets modify it to
+        https://sagsh018.signin.aws.amazon.com/console
+    b) IAM resources
+        Shows number users, groups, roles, identity providers, customer managed policies.
+    c) security status of account.
+        This contain five tasks which measured the security status of your account.
+        So lets fix them one by one
+        i) Delete your root access keys
+            When we try to create the access keys for root user account, we create access key ID and secret access key  
+            as a pair, which is visible and available for download only once. as soon as you leave the page of keys 
+            creation the pair of access key and Key ID are deleted. Hence this measure os already passed.
+        ii) Acitivte multi-factor authentication of root account (MFA)
+            Note that root account credentials are the email address and the password you have used to create and login
+            for the first time in AWS console.
+            Now in order to enable MFA on root account click on Manage MFA. This will land you to security cred page
+            click on activate MFS option and then choose virtual MFA device out of the option from types of MFA you
+            want. 
+            click continue and click on show QR code and i have scan it using VIP access. once you scan the QR code 
+            it will ger registered with the VIP application and then you can provide the secret code two times from VIP 
+            app to complete the process of enabling MFA
+            once donw this will show you have successfully assigned MFA to your AWS account root account.
+        iii) Create Individual IAM user
+            Click on Manage User==> Then click on Add user==> Then enter your user name (dslssha) in my case
+            and also select what access you want like programatic and AWS console level access. 
+            We will click on both 
+            Programmatic access -- This is used when we try to access AWS resources using AWS Cli, like connecting 
+            to AWS EC2 instance using AWS cli.
+            AWS console acccess -- Its direct access to AWS console from Web
+            So after choosing both types of access,
+            select auto generated password and check the box for pasword reset for next time login.
+
+            Then click on next and it will then ask to add user into the group. for that we will create our group
+            with name developer. so on that page click on create group. give the group name as developers.
+            Then we can choose the policy from the list. We will choose administratoraccess policy.
+
+            Note that there are many other policies with different job functions like Databaseadministrator, billing, etc
+            Also note that policies with AWS sign in fonr of them are AWS managed policies and these are written in JSON.
+
+            So once we selected the policy click on create group. Then we will back to user add page where we will add
+            our user to developer group and click next to add the tag. Then click on review. and then from there create 
+            user.
+            Then we will land on the page that will have our user name and the password and access keys and keys ID.
+            We can download that info in a form of CSV file and store it in the same folder   
+            /c/Users/Sagar/projects/AWS_Training/new_user_credentials.csv
+            once the file is downloaded close the page and we will be back to the dashboard.
+
+            Note that the policy we have applied to the developers group is Administratoraccess and contains following 
+            JSON code
+            {
+                "Version": "2012-10-17",
+                "Statement": [
+                    {
+                        "Effect": "Allow",
+                        "Action": "*",
+                        "Resource": "*"
+                    }
+                ]
+            }
+            So this provide effect as allow any action on any resource.
+        iv)IAM password policy
+            click on manage password policy==> set password policy
+            Then on the very next page and select whatever you want to apply to your user account password 
+            like minimum length, atleast one uppercase letter, one lowercase letter, one special character, etc.
+            once done click on apply and go back to your dashboard and you will see you have achieved all five security
+            contraints and your security status is 100%
+4) Now if you will notice on IAM resource section you will find link to number of users, click on that and then click on
+    perticlur user and that will take you to all the information related to that user like permissions to that user,
+    groups it is part of, security credentials- where you can see the user name, password, access key and access key ID
+    and also modify them based on your needs.
+
+5) Then finally we are going to study about the Roles.
+    Roles are used to allow one aws server to go and use another aws service. for example we can allow our EC2 instance
+    to talk to S3
+    So we can also say that IAM is a secure way to grant permissions to entities that you trust. The entities may include:
+        a) IAM user in another account
+        b) App code running on EC2 instance that need to perform action on AWS resource.
+        c) AWS service that need to act on resources in your account to provide its feature
+        d) users from corporate directory who uses identity federation with SAML.
+    So lets create a role by clocking on Roles in the left pane on IAM dashboard, and then on that page click create
+    role.
+    On the page we will choose the entity tyoe to which we want to provide access to. in our case we are choosing AWS 
+    service. Then we aer going to choose the user case/AWS service to which we want to assignt this role to.
+    We will choose EC2. and then click on Next:permissions, on the permissions page we are going to choose the policy to 
+    assign permissions to this role. and we have choose Amazons3fullaccess policy. So with this our EC2 will have full 
+    to S3 service.
+    Then after choosing the policy click on next, give the keya dn tag pair and then again click next. on this page give 
+    the name to this role : S3_admin_access. Also this page will have description about this role. So thats it click
+    on create role. and this will crete a role.
+
+    Exam Tips
+    =========
+    1) IAM is universal. It does not apply to any region at this time.
+    2) root account is a account which is setup when first setup your AWS account. it has complete AWS account access.
+    3) New user when crated have no permissions and we have to explicitly assign them policies to give them access.
+    4) New users are assinged Access Key ID and secret Access key when they are first created and opted for Programmatic
+        access
+    5) Access key ID and secret access key are not same as that of the password. you cannot make use of them to login to
+        console. you can only use them to access AWS via API and CLI.
+    6) you only get to view your access key ID and secret access key once, hence save them in proper place.
+    7) Always setup MFA on root account
+    8) you can create and customize your own password rotation policies.
