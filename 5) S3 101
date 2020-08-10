@@ -1,0 +1,22 @@
+What is S3?
+============
+1) Stands for  simple storeage service
+2) So S3 provides developers  and IT teams with secure, durable, highly scalable object storage.
+3) Amazon S3 is easy to use with simple web service interface to store and retrieve any amount of data from anywhere on
+    the web.
+4) S3 is a safe place to store the files. that measn it is used to strre the data as an object or flat files, picture, 
+    word document, movies 
+5) It is object based storage 
+6) The data is spreadh accross multiple site and facilities.
+
+baiscs of S3
+============
+1) S3 is object based. i.e. it allows you to upload files.
+2) Files can be from 0 B to 5 TB
+3) There is unlimited storage
+4) Files are stored in buckets.
+Note that bucket here is just a folder inside S3
+5) S3 is a universal namespace. That means, the names given to S3 must be unique globally.
+6) When you upload a file to S3 you are goinf to receive a HTTP 200  to your browser if the upload was successful.
+7) 
+To be contd..
