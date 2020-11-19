@@ -8,3 +8,9 @@
 3) Than we can see our budget details in below location:
   AWS console Main page >> Right hand upper corner -- username "sags" >> My billing Dashboard >> Left side sub headings "cost management" >> Budgets >> AWS budget page >>
   This page will have created budget information.
+
+To Check out the Billing information
+=====================================
+  AWS console >> Services >> Billing >> Left side sub heading >> Bills >> Bills page gives complete information about which service used for how much time and how much
+  it costs.
+  
