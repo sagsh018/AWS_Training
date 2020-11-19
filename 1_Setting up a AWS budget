@@ -1,0 +1,10 @@
+1) In ths lecture we will understand how to setup the budget for our AWS account, so that we can receive an email alert, incase we spend more than we require to spend.
+2) Steps:
+  AWS console Main page >> Right hand upper corner -- username "sags" >> My billing Dashboard >> Left side sub headings "cost management" >> Budgets >> AWS budget page >> 
+  create a budget >> Select budget type page >> Cost budget >> click on set your budget >> set your budget page, fill in following values >> Name - AWS account budget, 
+  Period -- Monthly, budget effective dates -- Reccuring, specify monthly budget -- Fixed, budgeted amount -- 0.01 $, Leave additional budget parameters as it is >> click
+  on configure threshold >> configure threshold page >> Fill in the following details >> Set threshold based on -- Actual cost, Alert threshold -- 100%, Email recipient --
+  ss0315345@outlook.com  >> click on confirm budget >> confirm budget page >> review budget >> click on create.
+3) Than we can see our budget details in below location:
+  AWS console Main page >> Right hand upper corner -- username "sags" >> My billing Dashboard >> Left side sub headings "cost management" >> Budgets >> AWS budget page >>
+  This page will have created budget information.
