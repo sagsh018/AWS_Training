@@ -1,0 +1,47 @@
+1) IAM stands for (Identity access management)
+2) Whole AWS security is present here
+  a) User
+  b) roles
+  c) groups
+3) Root account should never be used and shared with anyone, as thats the most powerfull account.
+4) Users must be created with proper permissions, we will see how to create users in practical labs
+5) IAM is a centre of AWS, that is all the other services makes use of IAM for implementing security and its a global service and not related to any specific region.
+6) We do have policies in IAM related to roles, etc and these policies are writtne in JSON.
+
+OVERALL STRUCTURE OF IAM
+=========================
+Firstly
+=======
+  we have Users, They are physical person like us
+Secondly 
+========
+  we have Groups, They are either based off of Funtion(Admin. Devops) or Teams(Engineering, Design,..). Groups contain users.
+Thirdly
+=======
+  we have Roles, They are for internal usage within AWS resources, that means these roles are applied to the AWS resources.
+Fourth/Finally
+==============
+  we have policies which are nothing but JSON document and these policies basically define what these "Users", "groups" and "Roles" can and cannot do.
+
+7) IAM has a global view, that means that IAM is not specific to any perticular region. for example, if we create any user, than that user will be a global user and not 
+  just for any perticular user and that makes sense as well.
+8) Permissions for IAM entities(Users, Groups, and Roles) are governed by the policies written in JSON
+9) With the help of IAM we could also setup multi factor authentication
+10) IAM already have many of the predefined "managed poilicies". But we will also lear how to create one.
+11) Its always a best practice to give user minimal amount of permissions they need to perform their jobs. and this called as :: Least Privilege principle.
+
+IAM Federation
+===============
+1) This is basically used by big enterprises
+2) Big enterprises integrates there own user repository such as Active directory with AWS IAM 
+3) This way, one can login to AWS console with the help of their company credentials.
+4) Microsoft active Directory uses the SAML standard to get itself registered with AWS.
+
+Things to remember
+==================
+1) One IAM USER per physical person
+2) One IAM ROLE per application 
+3) IAM credentials should never be shared
+4) Never ever write your IAM credentials in code or anywhere in public repo
+5) Never use ROOT account except for initial setup
+6) Never use ROOT IAM credentials.
