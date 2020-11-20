@@ -1,0 +1,38 @@
+AWS REGIONS
+============
+1) AWS has regions all around the world.
+2) AWS regions can be seen in AWS console from :: AWS console main page >> Right hand upper corner >> drop down >> you will see the list of region names along with there
+  codes. for example: us-east-1, eu-west-3, etc
+3) A region is nothing but cluster of data centers.
+4) Most AWS services are region scoped. by this it means that, suppose if you use a service in one region and than you tried using the same service in another region, than 
+  you won't have your data replicated from previous region.
+
+AWS Availability Zones
+=======================
+1) Each AWS region has many availability zones. Usually there are 3 AZ's, Minimum of 2 AZ's and Maximum of 6 AZ's
+  Example:
+  ========
+  a) ap-southeast-2a
+  b) ap-southeast-2b
+  c) ap-southeast-2c
+2) Each Availability zone (AZ) is one or more descrete data centers with redundant power, networking, and connectivity
+3) These AZ's in one region are separated from each other, so that they are isolated from disasters.
+4) These AZ's in one region are connected with high bandwidth and ultra low latency networking.
+
+
+To select the perticular region, we can do :: AWS console main page >> Right hand upper corner >> drop down >> From the drop down select whatever region you want.
+
+Note that there are two types of services:
+  a) region specific :: they are different in different regions, examples-- EC2
+  b) Global services :: They are at global level and not specific to any region. example-- IAM
+
+This URL gives the knowledge about how AWS works::
+
+  https://aws.amazon.com/about-aws/global-infrastructure/
+  it has information about how AWS is structured, how many AZ's, how many regions, etc.
+  
+  https://aws.amazon.com/about-aws/global-infrastructure/regions_az/?p=ngi&loc=2
+  regions 
+  
+  https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/?p=ngi&loc=4
+  Region tables, helps in fnding out what services are aailable in given region.
