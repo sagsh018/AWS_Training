@@ -1,0 +1,20 @@
+1) EC2 is one of the most famous of AWS offerings
+2) It mainly consist of the capabilities of :
+  a) Renting a virtual machine (EC2)
+  b) Storing data on virtual drives (EBS)
+  c) Distributing load accross machines (ELB)
+  d) Scaling services using auto-scaling groups (ASG)
+3) Knowing EC2 is important as it is a fundamental to understand how cloud works, and also knowing this EC2 of AWS helps in understanding the how and why serverless comes
+  into picture and how does that makes difference.
+4) So in this introduction lecture we are going to learn how to start, stop and terminate EC2 instance.
+  Login to AWS console as sharmasag >> Services >> EC2 >> EC2 Dashboard >> Resources >> 0 Running Instances, 0 volumes, etc, along with 1 security group created automatically >>
+  Scroll that page >> Click on Launch instance button >> Step 1 : Choose an Amazon Machine Image (AMI) -- Select "Amazon Linux 2" from this page as an image for Virtual machine
+  >> Step 2 : Choose and instance type -- select t2.micro >> Click on Next:configure instance details >> Step 3 : Configure Instance Details >> Number instances -- 1, uncheck
+  Request spot instances, Network -- Default VPC created at the time of account creation is selected automatically, subnet -- no preference selected but could be selected any as
+  us-east-1a/1b/1c/....etc, Auto assign the public IP -- with the help of subnet settings, IAM role -- not assigning any as of now, shutdown behaviour -- Stop, and so on, along with
+  some advanced options, we will leave them as it is right now and will see in greater details later >> Click on Next:Add Storage(EBS) >> Step 4 : Add Storage(EBS) >> Leave default
+  and mark delete on termination and no encryption >> Click Next:Tags >> Step 5 : Add Tag >> Add a tag >> Click on Next:Configure security group >> Step 6 : Configure Security
+  group >> Select Create new security group, give security group name -- my-first-security-group, Description -- Created with my first EC2 instance, Added a rule for SSH on port
+  22 with cutom IP as 0.0.0.0/0 to allow access from any IP, Description -- SSH to an instance >> Click on Review and Launch >> Review page >> Click on Launch >> pop up to 
+  create a key pair >> Select create new key pair and give name as EC2Tutorial >> Click on Download key pair >> Then finally click on Launch instance on that pop up >> View
+  Instance >> Instances page >> List of all instances running.
