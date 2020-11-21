@@ -1,0 +1,50 @@
+1) Amazon console main page >> services >> IAM >> IAM Dashboard page
+2) IAM Dashboard page >> Right hand upper corner >> Region will show global, because IAM is Global service.
+3) IAM Dashboard Page >> First time this page will show that there are 0 Users, 0 Groups. There wil be only 2 roles pre created by AWS for us.
+4) Now there are few steps that needs to be taken in order to secure and start with our IAM in AWS
+  a) Delete root user access keys :: These allow unlimited access to AWS account and they should be deleted the moment account is created, so that no one could access them
+      Note :: This step is done by AWS for us.
+  b) Activate MFA(Multi Factor Authentication) on our root account :: This adds another layer of security to our root account.
+      Amazon console main page >> services >> IAM >> IAM Dashboard page >> Under security alerts >> Enable MFA >> Your security credentials page >> Multi factor sub heading >>
+      click on Activate MFA >> MFA Device page >> select Virtual MFA device >> continue >> Setup Virtual MFA pop up >> click on show QR code >> scan the QR code with VIP
+      mobile app >> enter the 6 digit code two times from mobile app the same pop up below QR code >> Click on Assign MFA >> another pop up with message >> successfully 
+      assign virtual MFA
+  c) Create an individual IAM User :: This is to create a new IAM user other than root user and provide it permissions they need.
+      Amazon console main page >> services >> IAM >> IAM Dashboard page >> Under IAM resources >> click on Users >> Click on Add User on resulted page >> Add user page >>
+      Set User details >> User name -- sharmasag >> Select AWS access type >> Access type >> Programmatic and AWS management console >> Console password >> Auto generated >>
+      Required password reset >> Yes (Tick) >> Click on Next(permissions) >> Set permissions for user page >> Three options to set permissions (Add user to group, copy permissions
+      from existing user, Attach existing policies) >> Click on Attach existing policies >> from policy list below select AdministratorAccess policy >> Set permissions boundary >>
+      select create user without permission boundary >> Click on next:: Tags >> Add Tag on tag page, its optional >> Click next :: Review >> Click on Create user on Review page
+      >> Success page, along with Access keys to be downloaded in CSV format, download and keep them safe and don't save them anywhere >> Click on close.
+      Now on the left hand side of the page from the list of headings, you will see "Users" click on this and you will be able to see list of all users available.
+  d) Create Group and use it to assign permissions to Users :: once this group is created, we could assign user to this group and user will get all the permissions this group 
+      will have.
+      Amazon console main page >> services >> IAM >> IAM Dashboard page >> Under IAM resources >> click on Groups >> Click on Create New Group on resulted page >> Select Group
+      name >> Group name :: admin >> Click on Next >> Attach policy page >> Select AdministratorAccess >> Click on Next >> Review >> Create Group 
+      
+      Now again from IAM Dashboard page >> left hand side headings >> Click on groups >> List of groups available >> click on "admin" group >> Summary for group >> Three tabs >>
+      Permissions >> Shows attached policies of this group >> Click on Users Tab on this Group summary page >> Click on Add Users to Group >> Select the username from the resulted 
+      list of users on resulted page >> Click on Add Users >> Result into Summary page >> now Users tab on this page will show user sharmasag added to this group, So because of 
+      addition of this user to group admin, the permissions of group admin is given to user sharmasag as well.
+      
+      Now from IAM dashboard >> click on users >> click on username "sharmasag" from the list of users came >> Summary page >> Click on permissions tab >> This permissions tab
+      will have policy names available. Notice that user's policy has AdministratorAccess, and the same policy is coming from group admin as well to this sharmasag user as we have
+      added user to that group. So >> from permissions tab on User's summary page >> for AdministratorAcess policy click on cross on right >> Click on Detach in the pop up.
+      
+  e) Apply IAM password policies :: This is basically to guarantee that any IAM user should create stron passwords, and these passwords must rotate often 
+      IAM Dashboard >> Left hand side headings >> click on Account settings >> password policy page >> click on change password policy >> select minimum length of password >>
+      Enable password expiration -- set to 90 Days, Allow users to change their own password >> click on save changes
+5) IAM Dashboard >> Sign-in-Url >> Click on customize that >>  give the alias name for account URL as "sharmasag-course" >> click on create alias >> 
+    Link  to login to AWS console >> https://sharmasag-course.signin.aws.amazon.com/console >> past this URL in browser >> Sign In as IAM User >> give IAM user name "sharmasag"
+    >> password from the CSV file downloaded while creating the user >> Click on login >> password reset on first time login page >> give new password of your choice >>
+    Click on confirm password change >> AWS console main page >> Notice this time we have logged in as IAM user.
+6) So with this we have created a secure account and guarded our root account as well.
+
+
+
+
+
+
+
+
+
