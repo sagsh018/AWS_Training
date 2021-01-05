@@ -1,0 +1,10 @@
+1) You can have a look at the SSH summary table in the below file
+    6.1_SSH_Summary_Table.png
+2) To ssh to an EC2 instance from git bash or putty use the below method
+    # ssh -i /c/Users/Sagar/Desktop/AWSTutorial.pem ec2-user@ec2-54-189-84-248.us-west-2.compute.amazonaws.com
+3) To open the session from windows putty tool
+    a) First convert the AWS .pem key file into .ppk key file that can be recognized by putty
+    b) Once that is done, open putty and give the path of that .ppk file under auth section in putty tool 
+    c) give the username@ec2_ip and name of the session for future ref
+    d) save the session
+    e) click on open.
