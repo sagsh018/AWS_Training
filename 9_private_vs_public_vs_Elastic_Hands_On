@@ -1,0 +1,41 @@
+1) So now we have our first EC2 instance up and running named as "My_First_Instance"
+2) EC2 service ==> EC2 Instances page ==> Click on instance from the list of all available instances ==> See below in the description for that
+    EC2 instance ==> It has IPv4 public IP address as well as IPv4 private IP address assigned to it.
+3) We can use public IP address to ssh into the instance using below command
+    # ssh -i /c/Users/Sagar/Desktop/AWSTutorial.pem ec2-user@18.237.189.110(public IP)
+4) But if we use the private IP to login to EC2 instance, then we won;t be able to do that and our request will time out because we can't reach 
+    out to EC2 with its Private IP because we are on different network from that of AWS.
+5) But if we login to EC2 instance with the help of public IP, we can see the prompt of the EC2 and we can see that private IP is used to
+    to indicate the EC2 instance
+    [ec2-user@ip-172-31-7-142 ~]$
+6) Also if we login to EC2 uwing its Public IP and do 
+    # ifconfig -a 
+        eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+        inet 172.31.7.142  netmask 255.255.240.0  broadcast 172.31.15.255
+    So we can see that the network interface eth0 has private IP assigned to it.
+7) And as we already know that if we stop our running instance you will notice in the description that the machine will loose its public IP
+    but the provate IP remain as it is and when you start back the machine you will notice that the machine will have different public IP
+    address
+8) Now we will see how we can fix out public IP as well by using Elastic IP's. 
+    For that :
+    EC2 instance page ==> Running instance is there ==> select the instance(My_First_Instance) in our case ==> Check out the details below ==>
+    You will not see Elastic Ip assigned as of now ==> On left hand side manu ==> Network & Security ==> Elastic IP ==> Elastic IP addresses page
+    ==> Click on Allocate Elastic IP address ==> On that page ==> Selct the network Border group ==> us-west-2 ==> public IPv4 address pool as 
+    ==> Amazon's pool of IPv4 addresses ==> Tags(optional) ==> Click on Allocate ==> back to Elastic IP addresses page ==> Will have your
+    new Elastic IP listed on this page now ==> Now select that Elastc IP addres from the list ==> Click on Actions ==> Click on Associate
+    Elastic IP address ==> from the resulted page ==> Resource type : Instance ==> Choose the instance ==> Choose the private IP address ==> 
+    leave the reassociation as unchecked ==> Click on Associate ==> Go back to EC2 instance page from Left hand Manu ==> refresh the instance
+    page and select your instance ==> check out details below ==> it will have new public IP and same is assigned as the Elastic IP as well
+9) Now if you will stop and star the EC2 instance , you will notice that this Elastic IP will not change after the reboot. Also to ssh again
+    into the EC2 you will have to use this newly public elastic IP
+10) And now if we want to deassociate the Elastic IP address what we can do is:
+    EC2 instance page ==> Select the EC2 instance ==> Right click on Instance ==> from the list choose Networking ==> from networking list 
+    choose ==> Deassociate Elastic IP address ==> On resulting page check the all the details ==> Click on Deassociate ==> On warning type
+    ==> proceed ==> Again click on Deassociate 
+11) Again Back to EC2 Instacne page ==> Select the Instance again and check the details and this time you will notice that the Elastic 
+    IP is no more there.
+12) Now EC2 instance page ==> Left hand Manu ==> Elastic IP's ==> You will see the Elastic IP listed but this is no more associated with any
+    of the running instance hence we are going to release it otherwise it is going to cost us
+    Hence ==> On Elastic IP addresses page ==> Select the Elastic IP from the list ==> Actions ==> Click on Relase Elastic Ip address ==>
+    On warning click on Relase ==> back to Elastic IP addresses page ==> No Elastic IP listed here now.
+

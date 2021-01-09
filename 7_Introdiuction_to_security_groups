@@ -1,0 +1,47 @@
+1) Security groups are fundamental of network security in aws
+2) They control how traffic is allowed into or out of our EC2 machine. basically manages the inbound and outbound traffic.
+3) It is a most fundamental skill to learn to troubleshoot networking issue
+4) In this lecture we are going to learn how to use them to allow, inbound, and outbound ports.
+5) So lets check out few things related to security groups in AWS console.
+    => EC2 => EC2 Dashboard => running Instance => click on running instance => See below description section => check out the "security groups"
+    option => click on inbound rules/outbound rules to see the current firewall rules => click on security group name => security group page =>
+    (We could also reach to security group page from left hand side headings on EC2 instance page) => select the security group => see below
+    description section => inbound => outbound => tags section.
+6) Inbound rules decide what and how traffic comes inside the EC2 instance
+7) Outbound rules define how and what all traffic is going to leave from EC2 instance.
+8) Click on Inbound Tab => Click on edit => remove the ssh on port 22 rule we have added while creating the security group and after that we
+    won't be able to login to EC2 instance using ssh on port 22. => Add back the removed rule for ssh => Click on Add rule on inbound rule edit
+    page => select type(SSH) => protocol(TCP) => Port(22) => Source(Custom) => give IP : 0.0.0.0/0 => Description => Click on save => This created
+    same rule again we have deleted before and now you can again login to EC2 instance.
+9) Click on outbound tab => Shows all traffic can leave from this EC2 and can communicate with any out machine. And this is fine
+10) So security groups act as  a firewall on EC2  instances.
+11) They regulate:
+    a) Access to ports
+    b) Authorize the IP ranges - IPv4 and IPv6
+    c) Control inbound network(from other to this instance)
+    d) control outbound network(from this instance to other)
+    e) and if we see on security group page in console we can see all the inbound or outbound rules in a nice table
+12) Security groups are really firewall outside of your EC2 instances
+13) Single security group can be attached to multiple instances and one EC2 instance can have multiple security groups as well
+14) Security groups are locked down to regions/VPC combination and if you change the region you won't see the same security group there.
+15) Security group live outside the EC2 instance and if the traffic is blocked by security group than EC2 instance will not see it.
+16) It's always good to maintain one separate security group for SSH 
+17) If the application is not accessible (time out error) then its a security group issue
+18) if the application gives  a "connection Refused" error then its an application error or its not launched correctly.
+19) All inbound traffic is blocked by default
+20) all outbound traffic is Authorized by default.
+21) Now we will check out how to reference security group from other security group:
+    a) Suppose we have an EC2 instance and it is part of security group let say named as "security group 1" 
+    b) The inbound rules for that security group let say are :
+        i) Authorising security group 1
+        ii) Authorising security group 2
+        So why did we do this:
+    c) Suppose there is another EC2 instance and it is part of security group 2, so since we have authorized security group 2 in the inbound 
+        rules of security group 1, this EC2 instance which is part of security group 2 can directly go and talk to EC2 instance which is part of
+        security group 1 on the port we will decide them to talk.
+    d) Also let say we have another EC2 instance which is also part of security group 1, and since we have also authorised security group 1 in
+        the inbound rules of security group 1, so even this EC2 instance will be able to talk to other EC2 instance in the SG1 on the decided
+        port
+    e) and suppose there is another EC2 instance that is part of security group named "security group 3" and since this is not authorised in the
+        inbound rules of security group 1, any EC2 instance part of this SG will not be allowed to talk to EC2 instance of SG1
+22) You can refer to Daigram :: 7.1_Referencing_other_security_group.png

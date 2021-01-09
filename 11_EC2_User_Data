@@ -1,0 +1,27 @@
+1) It is possible to bootstrap our instances using an EC2 User Data script
+2) bootstrapping means launching commands when the machine starts
+3) This user data script is only run first at the instance first run
+4) EC2 user data is used to automate boot tasks such as :
+    a) Installing updates
+    b) insalling softwares
+    c) Downloading common files from internet
+    d) Anything you think of
+5) The EC2 user data scripts run on machine with root user, so whatever command you will enter in user data script will run with root privileges
+    on machine.
+6) So let's go ahead and do a hands on for User Data Scripts. We will Do following tasks at the boot time of EC2 instance
+    a) We will update the EC2 instance for all the softwares
+    b) Install Apache httpd 
+    c) Then display simple web page in browser- so for that we will put simple index.html file in root of apache server
+7) So refer the script written for that : 11.1_user_data_script.sh 
+8) So first we will terminate the EC2 instance currently running as of Now, so that we can start a new one with user data script. 
+    EC2 instance page ==> select the EC2 instance ==> right click ==> click on Terminate instance
+9) Now lets launch new instance:
+    EC2 service ==> EC2 Dashboard ==> Click on launch new instance ==> Select Amazon linux 2 AMI ==> select instance type as t2.micro and click
+    on next ==> Configure instance page ==> Leave all the configuration as it is and go at the end of page ==> Advance details ==> user data
+    box ==> Select as text ==> enter steps in the box as mentioned in the "11.1_user_data_script.sh" ==> click on next ==> leave the storage to
+    default ==> click on next ==> Add Tag ==> click on next ==> configure security group ==> select existing security group ==> 
+    "my-first-security-group" ( it has port 22 and 80 both opened already) ==> click on Review and Launch ==> click on Launch ==> choose existing
+    key pair ==> click on launch instances
+10) Now go back to EC2 instance page and you will see the new EC2 instance up and running ==> take its public IP and try to hit apache from 
+    web browser ==> It shows our index.html web page.
+11) We can also login to the newly launched instance and see the index.html updated with message we want.

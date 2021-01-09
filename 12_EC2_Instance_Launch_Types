@@ -1,0 +1,66 @@
+1) EC2 instance Launch Types
+    a) On Demand instances -- Short workloads, predictable pricing
+    b) Reserver (MIMIMUM 1 year)
+        i) Reserved Instances : long workloads
+        ii) Convertible Reserved Instances : Long workloads with flexible instances ( here we can start with one reserved instance and later
+            switch to another one)
+        iii) Scheduled Reserved Instances : example -- every Thursday between 3 amd 6 AM 
+    c) Spot Instances : short workloads, for cheap, can loose intances(not reliable)
+    d) Dedicated Instances : no other customer will share your hardware
+    e) Dedicated Hosts : book an entire physical server, control instance placement
+2) EC2 On Demand instances
+   =======================
+    a) Pay for what you use (billing per second after the first minute)
+    b) Has the highest cost but no upfront payment, that means you don't have to make any advance payments
+    c) No Long term commitment is required in this case.
+    d) Recommended for short-term and un-interrupted workloads, where you can't predict how the applications will behave.
+    e) So these On demand instances are good for elastic workloads 
+3) EC2 Reserved Instances
+   ======================
+    a) Up to 75% discount compared to On demand instances
+    b) Pay upfront for what you use for long term commitment 
+    c) Reservation period can be between 1 or 3 years
+    d) Recommended for steady state usage application (Ex: Database)
+    ==> Convertible Reserved Instances
+        ==============================
+        a) These are for reservation also except here you can change the EC2 type. So thses will be little expensive but you can have flexibility
+            in terms of instances.
+        b) gives up 54% of discount compared to On Demand
+    ==> Scheduled Reserved Instances
+        ============================
+        a) Launch within time window you reserved
+        b) These are useful when you require a fraction of Day/week/month
+4) EC2 Spot Instances
+    a) Can get a discount of up to 90% compared to On Demand 
+    b) You can loose these instances at any point of time if your max price is less then the current spot price 
+    c) These are MOST cost effective instances in AWS
+    d) These are useful for workloads that are resilient to failure
+        for example:
+            i) Batch jobs
+            ii) Data Analysis
+            iii) Image processing
+            etc 
+    e) These are not great for critical jobs or Databases
+5) So the Great Combo would be:
+    To have Reserved instances for baseline (for example an app require 10 instances all the time) + On Demand instances or Spot instance for Peaks
+6) EC2 Dedicated Hosts
+   ===================
+    a) Physical dedicated EC2 server for your use
+    b) Full control of EC2 instance placement
+    c) you get visibility into underlying sockets/physical cores of the hardware. which are useful for licensing purposes
+    d) Allocated for your account for a 3 years period reservation in advance and you need to have underlying sockets and cores access.
+    e) More expensive
+    f) Useful for softwares that have complicated license model (Bring your own license -- BYOL)
+    g) Or useful for companies that have strong regulatory or compliance needs
+7) EC2 Dedicated instances 
+   =======================
+    a) Instances running on hardware that's dedicated to you
+    b) They may share hardware with orhter incstances but only in the same AWS account
+    c) No control over instance placement(can only change hardware dedicated instance running on, by only stoping / starting)
+    d) The difference between the charecterstics of Dedicated instances and Dedicated hosts can be seen from the below mentioned Image
+        12.1_EC2_Dedicated_instance_vs_EC2_Dedicated_hosts.png
+8) So to understand all these instances better lets have a look at example in the below image related to hotel room reservation
+        12.2_hostel_example_for_types_of_EC2_instances.png
+9) We can have a look at the pricing for these instances using below table
+        12.3_Different_instances_pricing.png
+        

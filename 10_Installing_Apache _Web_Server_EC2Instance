@@ -1,0 +1,18 @@
+1) So here we are going to ssh into our EC2 instance and try to install Apache web server and then try to connect it from browser
+2) Login with folowing command
+    # ssh -i /c/Users/Sagar/Desktop/AWSTutorial.pem ec2-user@52.10.23.150 (Notie we are using public IP here)
+    # sudo su -
+    # yum update -y 
+    # yum install httpd -y
+    # systemctl start httpd; systemctl enable httpd
+    # systemctl status httpd
+    # curl localhost:80
+3) Now let's go back to AWS console
+    EC2 Instance page ==> Select the instance ==> see the details and security section and check out the security inbound rules ==> It has only
+    port 22 open for SSH ==> Click on Security group ==> Security group page ==> inbound rules ==> Edit inbound rules ==> click on Add rule ==>
+    select http from types ==> protocol as TCP ==> port as 80 ==> Source as custom (0.0.0.0/0) ==> Give description ==> Click on Save rules
+4) Now go to browser and try to hit the apache running in EC2 instance using EC2 instance Public IP on port 80
+    http://52.10.23.150:80
+5) Now let's add a sample index.html file under /var/www/html root directory to get custom web page
+    # echo "Hello world from $(hostname)" > /var/www/html/index.html
+    again refresh the page on browser

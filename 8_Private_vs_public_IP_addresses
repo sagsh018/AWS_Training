@@ -1,0 +1,44 @@
+1) Networking has two types of IP's
+    a) IPv4
+    b) IPv6
+2) In this course for AWS we are only going to work with IPv4 IP addresses
+3) IPv6 is mostly used in case of IoT
+4) IPv4 allows 3.7 Billions different addresses in the public space.
+5) IPv4 : [0-255].[0-255].[0-255].[0-255]
+6) Difference between public and provate IP's 
+    Public IP
+    ==========
+    a) Public IP means the machine can be identified over internet(WWW)
+    b) Public IP must be unique across the whole web (not two machines can have the same public IP)
+    c) Can be geo located easily
+
+    Private IP
+    ===========
+    a) Private IP means that the machine can only be identified in the private Network
+    b) The IP must be unique only across the private Network
+    c) But two differnet priviate networks (Two companies) can have the same IP's 
+    d) Machines can connect to outside internet (www) using NAT + internet Gateway(proxy)
+    e) Only specified range of IP's can be used as private IP
+    Refer to diagram :: 8.1_Difference_between_public_and_private_IP.png
+7) Elastic IP's 
+    a) As we know when we stop and start the EC2 instance, it can change its public IP
+    b) So if you want to have fixed IP address, they you have to look out of elastic IP
+    c) Elastic IP is basically a public IPv4 IP that you own, as long as you don't delete it.
+    d) You can attach it to only one instance at a time 
+    e) One advantage with Elastic IP is that you can mask the failure of an instance or software by rapidly remapping the address to another 
+        instance in your account
+    f) You can have only 5 Elastic IP's in your AWS account, and if you want more you will have to ask AWS to increase it.
+    g) Overall, try to avoid using Elastic IP address, because:
+        i) They often reflect poor architectural decision
+        ii) Instead use random IP address and register a DNS name to it
+        iii) Or use Load balancers and don't use public IP at all.
+8) So when it comes to our AWS architecture
+    a) By default, our EC2 instance comes with :
+        i) A private IP for internal AWS network
+        ii) A public IP for WWWW
+    b) When we are doing SSH into our EC2 instances :
+        i) We can't use private IP address, as we are not on the same network as that of AWS, untill you have VPN in place.
+        ii) We can use only the public IP to ssh to EC2 instance
+    c) And as we have discussed before, if your machine stopped and start, the public IP changes.
+
+    
